@@ -46,10 +46,15 @@
 
 1.  **Запустите Flask-сервер:**
     ```bash
-    flask run --app main
+    export FLASK_APP=main  # Linux/macOS
+    set FLASK_APP=main     # Windows
+
+    export FLASK_RUN_PORT=5001  # Linux/macOS
+    set FLASK_RUN_PORT=5001      # Windows
+
     flask run
     ```
-2.  Сервер будет доступен по адресу  `http://127.0.0.1:5000/`. 
+2.  Сервер будет доступен по адресу  `http://127.0.0.1:5001/`. 
 
 ## API
 
