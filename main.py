@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # MongoDB connection settings
-MONGO_URI = "mongodb://localhost:27017/"  # Подставьте свой URI
+MONGO_URI = "mongodb://localhost:27018/"  # Подставьте свой URI
 DATABASE_NAME = "lottery_db"
 BUYERS_COLLECTION = "buyers"
 WINNERS_COLLECTION = "winners"
@@ -92,6 +92,9 @@ def calculate_winners():
         daily = pd.read_xml(url1, encoding='cp1251')
         course = daily.iloc[3]['Value'].replace(',', '.')
         Cf = float(course[-4:-2])
+
+        if Cf == 00:
+            Cf = 1
 
         # --- Расчет шага выбора победителя ---
         step = math.ceil((num_buers - len(existing_winners)) / Cf)
